@@ -77,8 +77,15 @@ WSGI_APPLICATION = 'wishlist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'xxam3dy55xkcnaq6',
+        'NAME': 'd6cv42s3r6tvlu20',
+        'PASSWORD': 'vjlazp0qqfsl2067',
+        'HOST': 'j21q532mu148i8ms.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        'PORT': 3306,
+        'TEST': {
+            'NAME': 'WishlistDB',
+        },
     }
 }
 
