@@ -22,11 +22,15 @@ urlpatterns = [
     path('register/', views.registerPage, name="register"),
     path('login/', views.loginPage, name="login"),
     path('userProfile/', views.userPage, name="user"),
+    # path('admin/createUser', views.adminCreateAccountPage, name="createUser"),
+    path('allItems/', views.allItemsPage, name="allItems"),
+    path('editUser/', views.editUserPage, name="editUsers"),
+    path('item/', views.itemPage, name="item"),
     
 
 
     # Admin pages
-    path('adminAllUsers/', views.allUsersPage, name"allUsers"),
+    path('adminAllUsers/', views.allUsersPage, name="allUsers"),
 
 
     path('admin/', admin.site.urls),
