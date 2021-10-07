@@ -12,12 +12,11 @@
 
 <body>
     <h1>Wish List</h1>
-    <p>Test</p>
-    {% if wishlist %}
-    <h2> {{ wishlist.0.productName }}</h2>
-    {% else %}
-    <p> not found </p>
-    {% endif %}
+    {% for i in wishlist %}
+    <h2> {{ i.productName }}</h2>
+    <img src="{{ i.imgURL }}"/>
+    <p>{{ i.productDescription }}</p>
+    {% endfor %}
 </body>
 
 </html>
