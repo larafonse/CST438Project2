@@ -1,0 +1,16 @@
+version: "3.8"
+   
+services:
+  sql-server-db:
+    container_name: sql-server-db
+    image: mysqlwishlist
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/mysql
+    environment:
+      - Database=d6cv42s3r6tvlu20
+      - Username=xxam3dy55xkcnaq6
+      - Password=vjlazp0qqfsl2067
+    ports:
+      - "3306:3306"
+
