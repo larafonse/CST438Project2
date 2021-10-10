@@ -41,6 +41,7 @@ RUN pip3 install pipenv
 # RUN pipenv install --skip-lock --system --dev
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 RUN pip3 install gunicorn
+RUN python manage.py collectstatic
 
 EXPOSE 8888
 CMD gunicorn wishlist.wsgi:application --bind 0.0.0.0:$PORT
