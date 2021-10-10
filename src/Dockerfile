@@ -11,7 +11,9 @@ ADD . /app/
 # set default environment variables
 ENV PYTHONUNBUFFERED 1
 ENV LANG C.UTF-8
-ENV DEBIAN_FRONTEND=noninteractive 
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY requirements.txt /src/requirements.txt
 
 # set project environment variables
 # grab these via Python's os.environ
@@ -36,7 +38,9 @@ RUN pip3 install --upgrade pip
 RUN pip3 install pipenv
 
 # Install project dependencies
-RUN pipenv install --skip-lock --system --dev
+# RUN pipenv install --skip-lock --system --dev
+RUN pip3 install --no-cache-dir -r /app/requirements.txt
+RUN pip3 install gunicorn
 
 EXPOSE 8888
 CMD gunicorn wishlist.wsgi:application --bind 0.0.0.0:$PORT
