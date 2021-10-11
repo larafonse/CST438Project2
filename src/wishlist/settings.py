@@ -26,7 +26,7 @@ SECRET_KEY = 'b0xjn4f^9+zh%#rnn8&yaw(f5)4i993rim1gu!_i-7w(gi%c#f'
 # DEBUG can be True/False or 1/0
 DEBUG = int(os.environ.get('DEBUG', default=1)) 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['morning-temple-87376.herokuapp.com']
 
 
 # Application definition
@@ -127,3 +127,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/src/pages/static/'
