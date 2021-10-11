@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <title>{% block title %}Wish List{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'pages/styles/base.css' %}">
+    {% block site_css %}{% endblock %}
+</head>
+
+<body>
+
+    <header class="section-header">
+        <section class="header-main border-bottom bg-white">
+            <div class="container-fluid">
+                <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                    <!--Name of the website-->
+                    <div class="col-md-2">
+                        <h1 id="wishlistHeader"> WishList</h1>
+                    </div>
+                    <!--Search Bar-->
+                    <div class="col-md-8">
+                        <form action="/">
+                            <div class="d-flex form-inputs"> <input class="form-control" type="text"
+                                    placeholder="Search any product..." name="keyword">
+                                &nbsp&nbsp<button id="searchBtn"><i class="fa fa-search fa-lg"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--User Icons-->
+                    <div class="col-md-2">
+                        <div class="d-flex d-none d-md-flex flex-row align-items-center">
+                            <!--User dropdown Button-->
+                            <div class="dropdown">
+                                <button id="userBtn" class="btn" type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"><i
+                                        class="fa fa-user-circle fa-lg"></i></button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <form action="/userProfile"><button class="checkAlert">Your Profile</button>
+                                        </form>
+                                    </li> <br>
+                                    <li>
+                                        <form action="/login"><button class="checkAlert">Sign In</button>
+                                        </form>
+                                    </li><br>
+                                    <li>
+                                        <form action="/logout"><button class="checkAlert">Logout</button></form>
+                                    </li>
+                                </ul>
+                            </div>
+                            &nbsp&nbsp
+                            <!--User Hearted Button-->
+                            <span class="heartIcon"><a id="heartIcon" href="/allItems"><i
+                                        class="fas fa-heart"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--navigation bar in dropdown style-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+
+                <!--Navbar items-->
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/">Home</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Clothing</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Electronics</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#">Food</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>{% block body %} {% endblock %}</main>
+
+</body>
+
+</html>

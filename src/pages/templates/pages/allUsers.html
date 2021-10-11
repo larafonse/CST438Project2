@@ -1,50 +1,28 @@
+{% extends 'pages/base/header.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
-    <link rel="stylesheet" href="{% static 'pages/styles/base.css' %}">
-    <link rel="stylesheet" href="{% static 'pages/styles/allUsers-details.css' %}">
-</head>
+{% block title %}
+All Users
+{% endblock %}
 
-<body>
-    <header>
-        <nav>
-            <a href="">All User Display</a>
-        </nav>
-        <h1>User List</h1>
-        <p>You can see and edit users</p>
-    </header>
-    <main>
-        <h2>Current Users</h2>
-        <ol>
-            {% for i in users %}
-            <li class="meetup-item">
-                <article>
-                    <div class="meetup-summary">
-                        <h3>{{i.user}}</h3>
-                        <h3>{{i.name}}</h3>
-                    </div>
-                    <div class="user-actions">
-                        <a href="" class="btn"> Edit Users</a>
-                    </div>
-                </article>
-            </li>
+{% block body %}
+<main>
+    <h2>Current Users</h2>
+    <ol>
+        {% for i in users %}
+        <li class="meetup-item">
+            <article>
+                <div class="meetup-summary">
+                    <h3>{{i.user }}</h3>
+                    <h3>{{i.name}}</h3>
+                </div>
+                <div class="user-actions">
+                    <a href="" class="btn"> Edit Users</a>
+                </div>
+            </article>
+        </li>
 
-            {% endfor %}
-        </ol>
-    </main>
-    <!-- <h1>ALL USERS</h1>
-    <p>Test</p>
-    {% if show_users %}
-    <h2> {{ users.0.title }}</h2>
-    {% else %}
-    <p> no meetus found </p>
-    {% endif %} -->
-</body>
-
-</html>
+        {% endfor %}
+    </ol>
+</main>
+{% endblock %}

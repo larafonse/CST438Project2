@@ -19,7 +19,11 @@ def userPage(request):
     return render(request, 'pages/user.html', context)
 
 def allUsersPage(request):
-    context = {}
+    users = [
+        {'user': '1', 'name': 'Joe'},
+        {'user': '2', 'name': 'Jon'}
+    ]
+    context = {'users': users}
     return render(request, 'pages/allUsers.html', context)
 
 def adminCreateAccountPage(request):
