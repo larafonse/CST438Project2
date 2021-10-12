@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Item
+from .models import User
 
 def registerPage(request):
     context = {}
@@ -20,11 +21,12 @@ def userPage(request):
     return render(request, 'pages/user.html', context)
 
 def allUsersPage(request):
-    users = [
-        {'user': '1', 'name': 'Joe'},
-        {'user': '2', 'name': 'Jon'}
-    ]
-    context = {'users': users}
+    all_users = User.objects.all
+    # users = [
+    #     {'user': '1', 'name': 'Joe'},
+    #     {'user': '2', 'name': 'Jon'}
+    # ]
+    context = {'all_users': all_users}
     return render(request, 'pages/allUsers.html', context)
 
 def adminCreateAccountPage(request):
