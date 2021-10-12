@@ -26,7 +26,7 @@ SECRET_KEY = 'b0xjn4f^9+zh%#rnn8&yaw(f5)4i993rim1gu!_i-7w(gi%c#f'
 # DEBUG can be True/False or 1/0
 DEBUG = int(os.environ.get('DEBUG', default=1)) 
 
-ALLOWED_HOSTS = ['morning-temple-87376.herokuapp.com']
+ALLOWED_HOSTS = ['morning-temple-87376.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -128,3 +128,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/src/pages/static/'
+
