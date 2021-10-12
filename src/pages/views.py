@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+from .models import Item
 
 def registerPage(request):
     context = {}
@@ -12,7 +12,8 @@ def loginPage(request):
 
 def homePage(request):
     context = {}
-    return render(request, 'pages/home.html', context)
+    return render(request, 'pages/home.html', context )
+
 
 def userPage(request):
     context = {}
@@ -39,5 +40,5 @@ def itemPage(request):
     return render(request, 'pages/item.html', context)
 
 def allItemsPage(request):
-    context = {}
-    return render(request, 'pages/allItems.html', context)
+    wishlist = Item.objects.filter(customerId=2)
+    return render(request, 'pages/allItems.html', {"wishlist":wishlist})

@@ -1,3 +1,10 @@
 {% extends 'pages/base/header.html' %}
 {% load static %}
 <h1>all items</h1>
+    <h1>Wish List</h1>
+    {% for i in wishlist %}
+    <h2> {{ i.productName }}</h2>
+    <img src="{{ i.imgURL }}"/>
+    <p>{{ i.productDescription }}</p>
+    <p>{{ i.customerId }}</p>
+    {% endfor %}
