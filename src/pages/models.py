@@ -1,6 +1,9 @@
 from django.db import models
 
 # Create your models here.
+class wishList(models.Model):
+    title=models.CharField(max_length=200)
+    slug =models.SlugField(unique=True)
 
 class User(models.Model):
     customerId = models.BigAutoField(primary_key=True)
@@ -13,6 +16,8 @@ class User(models.Model):
     def __str__(self):
         return str(self.customerId)
 
+
+
 class Item(models.Model):
     productName = models.CharField(max_length=50)
     productDescription = models.CharField(max_length=250)
@@ -21,4 +26,6 @@ class Item(models.Model):
 
     def __str__(self):
         return self.productName
-    
+
+
+
