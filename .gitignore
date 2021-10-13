@@ -225,6 +225,9 @@ Temporary Items
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 
+#Pip stuff
+Pipfile
+Pipfile.lock
 # Celery stuff
 
 # SageMath parsed files
