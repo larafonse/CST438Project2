@@ -1,5 +1,6 @@
 {% extends 'pages/base/header.html' %}
 {% load static %}
+<<<<<<< HEAD
 {% block body %}
 <h1>all items</h1>
 <h1>Wish List</h1>
@@ -9,4 +10,33 @@
 <p>{{ i.productDescription }}</p>
 <p>{{ i.customerId }}</p>
 {% endfor %}
+=======
+
+{% block title %}
+all items
+{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Wish List</h1>
+    {% for i in wishlist %}
+    <li class="all-userslist">
+        <article>
+            <h2> {{ i.productName }}</h2>
+            <div class="allusers-summary">
+                <img src="{{ i.imgURL }}" />
+                <p>{{ i.productDescription }}</p>
+                <p>{{ i.customerId }}</p>
+                <h3>{{ i }}</h3>
+                <!-- <h3>{{i.}</h3> -->
+            </div>
+            <div class="user-actions">
+                <a href="" class="btn"> Update Item</a>
+                <a href="" class="btn"> Remove Item</a>
+            </div>
+        </article>
+    </li>
+    {% endfor %}
+</main>
+>>>>>>> 6c856f1... showing user item with Id
 {% endblock %}
