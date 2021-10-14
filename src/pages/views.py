@@ -4,9 +4,7 @@ from .models import Item
 from .models import User
 from .forms import CreateUserForm
 from .forms import ItemForm
-
 from django.contrib.auth import authenticate, login, logout
-
 from django.contrib import messages
 
 def registerPage(request):
