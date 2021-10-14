@@ -1,3 +1,12 @@
 {% extends 'pages/base/header.html' %}
 {% load static %}
+
+{% block body %}
 <h1>items</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name="submit">
+</form>
+{% endblock %}
