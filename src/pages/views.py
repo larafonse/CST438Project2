@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Item
 from .models import User
 from .forms import CreateUserForm
+from .forms import ItemForm
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -54,10 +55,6 @@ def userPage(request):
 
 def allUsersPage(request):
     all_users = User.objects.all
-    # users = [
-    #     {'user': '1', 'name': 'Joe'},
-    #     {'user': '2', 'name': 'Jon'}
-    # ]
     context = {'all_users': all_users}
     return render(request, 'pages/allUsers.html', context)
 
@@ -70,9 +67,16 @@ def editUserPage(request):
     return render(request, 'pages/editUsers.html', context)
 
 def itemPage(request):
-    context = {}
+    form = ItemForm()
+    if request.method == 'POST':
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/allItems')
+
+    context = {'form': form}
     return render(request, 'pages/item.html', context)
 
 def allItemsPage(request):
-    wishlist = Item.objects.filter(customerId=2)
+    wishlist = Item.objects.filter(customerId=1)
     return render(request, 'pages/allItems.html', {"wishlist":wishlist})
