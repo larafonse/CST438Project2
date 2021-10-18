@@ -78,3 +78,8 @@ def itemPage(request):
 def allItemsPage(request):
     wishlist = Item.objects.filter(customerId=1)
     return render(request, 'pages/allItems.html', {"wishlist":wishlist})
+
+def landingPage(request):
+    context = {}
+    return render(request, 'pages/Landing.html', context)
+

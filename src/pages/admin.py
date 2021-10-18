@@ -5,7 +5,7 @@ from .models import  Item
 
 
 class itemAdmin(admin.ModelAdmin):
-    list_display = {'productName', 'productDescription', }
+    list_display = {'productName', 'productDescription' }
     list_filter = {'customerId'}
 
 

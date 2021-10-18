@@ -25,6 +25,7 @@ urlpatterns = [
     path('login/', views.loginPage, name="login"),
     path('logout/', views.loginPage, name="logout"),
     path('userProfile/', views.userPage, name="user"),
+    path('landing/', views.landingPage, name="landingPage"),
 
     # path('admin/createUser', views.adminCreateAccountPage, name="createUser"),
     path('allItems/', views.allItemsPage, name="allItems"),
