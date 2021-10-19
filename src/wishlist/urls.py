@@ -28,9 +28,11 @@ urlpatterns = [
     path('landing/', views.landingPage, name="landingPage"),
 
     # path('admin/createUser', views.adminCreateAccountPage, name="createUser"),
-    path('allItems/', views.allItemsPage, name="allItems"),
+    path('allItems/<int:pk>', views.allItemsPage, name="allItems"),
     path('editUser/', views.editUserPage, name="editUsers"),
     path('item/', views.itemPage, name="item"),
+    
+    path('update/<int:pk>', views.update, name='update'),
 
     # Admin pages
     path('adminAllUsers/', views.allUsersPage, name="allUsers"),

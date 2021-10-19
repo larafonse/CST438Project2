@@ -75,11 +75,27 @@ def itemPage(request):
     context = {'form': form}
     return render(request, 'pages/item.html', context)
 
-def allItemsPage(request):
-    wishlist = Item.objects.filter(customerId=1)
-    return render(request, 'pages/allItems.html', {"wishlist":wishlist})
 
 def landingPage(request):
     context = {}
     return render(request, 'pages/Landing.html', context)
+  
+def allItemsPage(request, pk):
+    # update
+    wishlist = Item.objects.filter(id=pk)
+    context = {'wishlist':wishlist}
+    return render(request, 'pages/allItems.html', context)
 
+def update(request,pk):
+
+    userItem = Item.objects.get(id=pk)
+    form = ItemForm(instance=userItem)
+    if request.method == 'POST':
+        form = ItemForm(request.POST, instance=userItem)
+        if form.is_valid():
+            form.save()
+            return redirect('/allItems/' + str(pk))
+    context = {
+        'form': form
+    }
+    return render(request, 'pages/update.html', context)

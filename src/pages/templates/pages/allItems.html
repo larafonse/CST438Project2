@@ -1,12 +1,21 @@
 {% extends 'pages/base/header.html' %}
 {% load static %}
 {% block body %}
-<h1>all items</h1>
-<h1>Wish List</h1>
-{% for i in wishlist %}
-<h2> {{ i.productName }}</h2>
-<img src="{{ i.imgURL }}" />
-<p>{{ i.productDescription }}</p>
-<p>{{ i.customerId }}</p>
+<tr>
+    <td>all items</td>
+    {% for i in wishlist %}
+    <td> {{ i.productName }}</td>
+    <td><img src="{{ i.imgURL }}" /></td>
+    <td>
+        <p>{{ i.productDescription }}</p>
+    </td>
+    <td>
+        <p>{{ i.id }}</p>
+        <p>{{ i.customerId }}</p>
+    </td>
+
+    <td><a class="btn btn-sm btn-info" href="{% url 'update' i.id %}"> Update</a></td>
+    <td><a class=" btn btn-sm btn-danger" href=""> Delete</a></td>
+</tr>
 {% endfor %}
 {% endblock %}
