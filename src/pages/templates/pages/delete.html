@@ -1,0 +1,16 @@
+{% extends 'pages/base/header.html' %}
+
+{% load static %}
+
+{% block body %}
+<h1>Delete Item</h1>
+<p>Are you sure you want to delete "{{item}}"?</p>
+<form action="{% url 'delete' item.id %}" method="POST">
+
+    {% csrf_token %}
+    <a href="{% url 'home' %}">Cancel</a>
+
+
+    <input type="submit" name="confirm">
+</form>
+{% endblock %}

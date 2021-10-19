@@ -32,6 +32,7 @@ urlpatterns = [
     path('item/', views.itemPage, name="item"),
     
     path('update/<int:pk>', views.update, name='update'),
+    path('delete/<int:pk>', views.delete, name='delete'),
 
     # Admin pages
     path('adminAllUsers/', views.allUsersPage, name="allUsers"),
