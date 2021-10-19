@@ -76,7 +76,6 @@ def itemPage(request):
     return render(request, 'pages/item.html', context)
 
 def allItemsPage(request, pk):
-    # update
     wishlist = Item.objects.filter(id=pk)
     context = {'wishlist':wishlist}
     return render(request, 'pages/allItems.html', context)
@@ -94,3 +93,13 @@ def update(request,pk):
         'form': form
     }
     return render(request, 'pages/update.html', context)
+
+
+def delete(request, pk):
+    userItem = Item.objects.get(id=pk)
+    if request.method == "POST":
+        userItem.delete()
+        return redirect('/allItems/' + str(pk))
+        
+    context = {'item' : userItem}
+    return render(request, 'pages/delete.html', context)
