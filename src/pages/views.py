@@ -75,6 +75,11 @@ def itemPage(request):
     context = {'form': form}
     return render(request, 'pages/item.html', context)
 
+
+def landingPage(request):
+    context = {}
+    return render(request, 'pages/Landing.html', context)
+  
 def allItemsPage(request, pk):
     wishlist = Item.objects.filter(id=pk)
     context = {'wishlist':wishlist}
