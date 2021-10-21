@@ -94,3 +94,7 @@ button:hover,
 .centerTitle{
     text-align: center;
 }
+
+.username {
+  text-decoration: line-through;
+}

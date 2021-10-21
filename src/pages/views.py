@@ -6,40 +6,37 @@ from .forms import CreateUserForm
 from .forms import ItemForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .decorators import unauthenticated_user
 
+@unauthenticated_user
 def registerPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        form = CreateUserForm()
+    form = CreateUserForm()
 
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                userName = form.cleaned_data.get('username')
-                messages.success(request, "Account was created for " + userName);
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            userName = form.cleaned_data.get('username')
+            messages.success(request, "Account was created for " + userName);
 
-                return redirect('login')
+            return redirect('login')
 
     context = {'form': form}
     return render(request, 'pages/register.html', context)
 
+@unauthenticated_user
 def loginPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-            user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username, password=password)
 
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.info(request, 'username OR password incorrect')
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, 'username OR password incorrect')
 
     context = {}
     return render(request, 'pages/login.html', context)
