@@ -6,7 +6,9 @@ from .forms import CreateUserForm
 from .forms import ItemForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .decorators import unauthenticated_user
 
+@unauthenticated_user
 def registerPage(request):
     form = CreateUserForm()
 
@@ -22,8 +24,8 @@ def registerPage(request):
     context = {'form': form}
     return render(request, 'pages/register.html', context)
 
+@unauthenticated_user
 def loginPage(request):
-
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
