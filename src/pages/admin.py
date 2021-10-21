@@ -6,8 +6,8 @@ from .models import User
 
 
 class itemAdmin(admin.ModelAdmin):
-    list_display = {'productName', 'productDescription' }
-    list_filter = {'customerId'}
+    list_display = ['productName', 'productDescription' ]
+    list_filter = ['customerId']
 
 
 admin.site.register(Item, itemAdmin)
