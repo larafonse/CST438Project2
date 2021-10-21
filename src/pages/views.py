@@ -81,9 +81,14 @@ def landingPage(request):
     return render(request, 'pages/Landing.html', context)
   
 def allItemsPage(request, pk):
-    wishlist = Item.objects.filter(id=pk)
+    wishlist = Item.objects.filter(customerId=pk)
     context = {'wishlist':wishlist}
     return render(request, 'pages/allItems.html', context)
+
+def individualItem(request, pk):
+    wishlist = Item.objects.filter(id=pk)
+    context = {'item':wishlist[0]}
+    return render(request, 'pages/individualItem.html', context)
 
 def update(request,pk):
 

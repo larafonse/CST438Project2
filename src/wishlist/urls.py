@@ -34,6 +34,7 @@ urlpatterns = [
     
     path('update/<int:pk>', views.update, name='update'),
     path('delete/<int:pk>', views.delete, name='delete'),
+    path('allItems/item/<int:pk>', views.individualItem, name='individualItem'),
 
     # Admin pages
     path('adminAllUsers/', views.allUsersPage, name="allUsers"),
