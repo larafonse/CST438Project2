@@ -82,8 +82,9 @@ def landingPage(request):
     context = {}
     return render(request, 'pages/Landing.html', context)
   
-def allItemsPage(request, pk):
-    wishlist = Item.objects.filter(customerId=pk)
+def allItemsPage(request):
+    userID =request.user.id
+    wishlist = Item.objects.filter(customerId=userID)
     context = {'wishlist':wishlist}
     return render(request, 'pages/allItems.html', context)
 
