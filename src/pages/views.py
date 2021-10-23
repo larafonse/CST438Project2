@@ -96,7 +96,6 @@ def itemPage(request):
     return render(request, 'pages/item.html', context)
 
 @unauthenticated_user
-@allowed_users(allowed_roles=['admin','user'])
 def landingPage(request):
     context = {}
     return render(request, 'pages/Landing.html', context)
