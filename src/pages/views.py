@@ -103,8 +103,9 @@ def landingPage(request):
   
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin','user'])
-def allItemsPage(request, pk):
-    wishlist = Item.objects.filter(customerId=pk)
+def allItemsPage(request):
+    userID =request.user.id
+    wishlist = Item.objects.filter(customerId=userID)
     context = {'wishlist':wishlist}
     return render(request, 'pages/allItems.html', context)
 
