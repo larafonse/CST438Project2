@@ -66,6 +66,13 @@
                                         <form action="/logout"><button class="checkAlert">Logout</button></form>
                                         <!-- <span><a class="checkAlert" href="{% url 'logout' %}">Logout</a></span> -->
                                     </li>
+                                    {% if request.user.is_staff %}
+                                    <br>
+                                    <li>
+                                        <button class="checkAlert"><a class="adminBtn" href="/admin">Admin
+                                                Dashboard</a></button>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                             &nbsp&nbsp

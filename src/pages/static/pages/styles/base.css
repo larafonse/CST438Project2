@@ -32,7 +32,8 @@ h3 {
 }
 
 button,
-.btn {
+.btn,
+.adminBtn {
   cursor: pointer;
   font: inherit;
   padding: 0.5rem 1.5rem;
@@ -45,7 +46,8 @@ button,
 
 
 button:hover,
-.btn:hover {
+.btn:hover,
+.adminBtn:hover {
   background-color: #74cfbf;
   border-color: #74cfbf;
 }
