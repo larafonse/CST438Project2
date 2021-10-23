@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .decorators import allowed_users, unauthenticated_user
+from django.contrib.auth.models import Group
 
 def logoutUser(request):
     logout(request)
@@ -20,8 +21,12 @@ def registerPage(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
             userName = form.cleaned_data.get('username')
+
+            group = Group.objects.get(name='user')
+            user.groups.add(group)
+
             messages.success(request, "Account was created for " + userName);
 
             return redirect('login')
@@ -47,38 +52,38 @@ def loginPage(request):
     return render(request, 'pages/login.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def homePage(request, pk):
     context = {}
     return render(request, 'pages/home.html', context )
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def userPage(request):
     context = {}
     return render(request, 'pages/user.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['admin'])
 def allUsersPage(request):
     all_users = User.objects.all
     context = {'all_users': all_users}
     return render(request, 'pages/allUsers.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['admin'])
 def adminCreateAccountPage(request):
     context = {}
     return render(request, 'pages/adminCreateAcc.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def editUserPage(request):
     context = {}
     return render(request, 'pages/editUsers.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def itemPage(request):
     form = ItemForm()
     if request.method == 'POST':
@@ -91,27 +96,27 @@ def itemPage(request):
     return render(request, 'pages/item.html', context)
 
 @unauthenticated_user
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def landingPage(request):
     context = {}
     return render(request, 'pages/Landing.html', context)
   
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def allItemsPage(request, pk):
     wishlist = Item.objects.filter(customerId=pk)
     context = {'wishlist':wishlist}
     return render(request, 'pages/allItems.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def individualItem(request, pk):
     wishlist = Item.objects.filter(id=pk)
     context = {'item':wishlist[0]}
     return render(request, 'pages/individualItem.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def update(request,pk):
 
     userItem = Item.objects.get(id=pk)
@@ -127,7 +132,7 @@ def update(request,pk):
     return render(request, 'pages/update.html', context)
 
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admin','user'])
+@allowed_users(allowed_roles=['admin','user'])
 def delete(request, pk):
     userItem = Item.objects.get(id=pk)
     if request.method == "POST":
