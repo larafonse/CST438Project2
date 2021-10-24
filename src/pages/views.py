@@ -44,7 +44,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('/' + str(request.user.id))
+            return redirect('/allItems')
         else:
             messages.info(request, 'username OR password incorrect')
 
@@ -125,7 +125,7 @@ def update(request,pk):
         form = ItemForm(request.POST, instance=userItem)
         if form.is_valid():
             form.save()
-            return redirect('/allItems/' + str(pk))
+            return redirect('/allItems/item/' + str(pk))
     context = {
         'form': form
     }
@@ -137,7 +137,7 @@ def delete(request, pk):
     userItem = Item.objects.get(id=pk)
     if request.method == "POST":
         userItem.delete()
-        return redirect('/allItems/' + str(pk))
+        return redirect('/allItems')
         
     context = {'item' : userItem}
     return render(request, 'pages/delete.html', context)
