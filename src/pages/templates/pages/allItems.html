@@ -2,7 +2,12 @@
 {% load static %}
 {% block body %}
 <tr>
-    <td>all items</td>
+    <h1 class="text-center">{{ request.user }}'s Wish List</h1>
+    <div class="col text-center">
+        <a href="/item" class="btn btn-success">Add new Item to wishlist</a>
+    </div>
+      
+    
     <br>
     <div class="card-group">
         
