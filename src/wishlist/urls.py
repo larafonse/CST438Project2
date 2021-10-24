@@ -23,10 +23,10 @@ urlpatterns = [
     # User Pages
     path('register/', views.registerPage, name="register"),
     path('login/', views.loginPage, name="login"),
-    path('logout/', views.loginPage, name="logout"),
-    path('userProfile/', views.userPage, name="user"),
+    path('logout/', views.logoutUser, name="logout"),
     path('landing/', views.landingPage, name="landingPage"),
 
+    path('userProfile/', views.userPage, name="user"),
     # path('admin/createUser', views.adminCreateAccountPage, name="createUser"),
     path('allItems/', views.allItemsPage, name="allItems"),
     path('editUser/', views.editUserPage, name="editUsers"),
@@ -41,5 +41,5 @@ urlpatterns = [
 
 
     path('admin/', admin.site.urls),
-    path('', views.homePage, name='home'),
+    path('<int:pk>', views.homePage, name='home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
