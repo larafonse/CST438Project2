@@ -2,18 +2,17 @@
 {% load static %}
 {% block body %}
 <tr>
-    <td>Item</td>
     <br>
-    <div class="card-group">
-        
-        <div class="card">
-            <a  href ="/allItems/item/{{item.id}}" ><img class="card-img-top"src="{{ item.imgURL }}" alt="Card image cap"></a>
-            <div class="card-body">
-            <a style = "text-decoration: none; color: black;" href ="/allItems/item/{{item.id}}"><h5 class="card-title" href ="/allItems/item/{{i.id}}">{{ i.productName }}</h5></a>
-            <a style = "text-decoration: none; color: black;" href ="/allItems/item/{{item.id}}"><p class="card-text" href ="/allItems/item/{{i.id}}" >{{ i.productDescription }}</p></a>
-            <a href="{% url 'update' item.id %}" class="btn btn-primary">Update</a>
-            <a href="{% url 'delete' item.id %}" class="btn btn-primary">Delete</a>
-            </div>
+    <div class="container" >
+        <div class="row">
+          <div class="col">
+                <img class="card-img-top"src="{{ item.imgURL }}" alt="Card image cap">
+          </div>
+          <div class="col">
+            <h1 class="card-text" >{{ item.productName }}</h2>
+            <h4 class="card-text"  >{{ item.productDescription }}</h4>
+            <a href="/allItems" class="btn btn-primary">Back</a>
+          </div>
         </div>
     </div>
 {% endblock %}
